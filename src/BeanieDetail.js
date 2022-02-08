@@ -4,21 +4,16 @@ import { Link } from 'react-router-dom';
 import { getSingleBeanie } from './services/fetch-utils';
 
 export default function BeanieDetail() {
-  // you'll need to track the current beanieBaby in state
-  // you'll need to get the route param using the appropriate react router hook
   const [beanieBaby, setBeanieBaby] = useState({});
   const params = useParams();
-  console.log('||params: ', params);
 
   useEffect(() => {
-    // you'll need to define a fetch function here (then call it below) that gets this page's beanie baby and injects it into state using the correct state handler
     async function getCurrent() {
       const current = await getSingleBeanie(params.id);
       setBeanieBaby(current);
-      console.log('||current', current);
     }
     getCurrent();
-  }, [params]); // note that you'll want the id from the url in the dependency array because you want the useEffect callback to get called every time the url changes 
+  }, [params]); 
 
   function handleBeanieClick() {
     // here's a challenge. How can you link on click to the beanie baby's correct entry in the official beanie baby fan site?
@@ -26,8 +21,6 @@ export default function BeanieDetail() {
 
   return (
     <>
-      {/* Feel free to uncomment and use the below code--but you'll need to figure out how to keep it from blowing up on load */}
-      
       <Link to='/'>Home</Link>
       <div className='beanie-detail' onClick={handleBeanieClick}>
         <div className='beanie-data'>
