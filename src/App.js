@@ -12,11 +12,11 @@ export default function App() {
     <Router>
       <div className='App'>
         <Switch>
-          <Route to='/'>
+          <Route exact path='/'>
             {/* this home page route should list all the beanies */}
             <BeaniesPage />
           </Route>
-          <Route to='/beanie-babies/:id'> 
+          <Route exact path='/beanie-babies/:id'> 
             {/* this route should point to a particular beanie baby by id and render that specific BeanieDetail page */}
             <BeanieDetail />
           </Route>
